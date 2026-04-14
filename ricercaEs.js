@@ -1,0 +1,45 @@
+let esercizi = [];
+
+fetch('esercizi.json')
+    .then(res => res.json())
+    .then(data => {
+        esercizi = data;
+        mostraRisultati(esercizi); // mostra subito tutti
+    });
+
+// Funzione separata per mostrare i risultati
+function mostraRisultati(lista) {
+    const ul = document.getElementById('results');
+
+    if (lista.length === 0) {
+        ul.innerHTML = `<li class="text-white text-sm px-2 py-2">Nessun esercizio trovato.</li>`;
+        return;
+    }
+
+    ul.innerHTML = lista.map(e => `
+        <li class="flex items-center justify-between bg-white rounded-lg px-4 py-3 shadow-sm cursor-pointer hover:bg-lime-100 transition-colors">
+            <div>
+                <p class="font-semibold text-gray-800 text-sm">${e.nome}</p>
+                <p class="text-gray-400 text-xs mt-0.5">${e.gruppo} · ${e.attrezzatura}</p>
+            </div>
+            <span class="text-lime-600 text-xs font-bold">+ Aggiungi</span>
+        </li>
+    `).join('');
+}
+
+// Filtra mentre scrivi
+document.getElementById('search').addEventListener('input', function () {
+    const query = this.value.toLowerCase().trim();
+
+    if (query === '') {
+        mostraRisultati(esercizi); // se cancelli tutto, torna a mostrare tutti
+        return;
+    }
+
+    const filtrati = esercizi.filter(e =>
+        e.nome.toLowerCase().includes(query) ||
+        e.gruppo.toLowerCase().includes(query)
+    );
+
+    mostraRisultati(filtrati);
+});

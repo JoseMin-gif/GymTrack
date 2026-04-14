@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body class="bg-[url('img/bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen">
+
+<div class="min-h-screen bg-black/40 backdrop-blur-[2px]">
+
+    <!-- NAVBAR -->
+    <nav class="relative top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-10 h-14 bg-bg/90 backdrop-blur border-b border-border" style="background-color:rgba(5,4,4,0.895);border-bottom:1px solid #1f2128;">
+        <span style="color:#ffffff;font-family:'Syne',sans-serif;font-weight:800;font-size:1.125rem;letter-spacing:-0.02em;">
+            Gym<span style="color:#c8f135">Track</span>
+        </span>
+        <div class="hidden md:flex items-center gap-8 text-sm" style="color:#4b5060;font-weight:500;">
+            <a href="#" style="color:#e8eaf0;">Dashboard</a>
+            <a href="#" class="hover:text-white transition-colors">Scheda</a>
+            <a href="#" class="hover:text-white transition-colors">Storico</a>
+            <a href="#" class="hover:text-white transition-colors">Statistiche</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <button class="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-2 rounded" style="background:#c8f135;color:#0e0f11;">
+                + Nuovo
+            </button>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style="background:#16181c;border:1px solid #1f2128;color:#c8f135;">
+                <a href="">N</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEARCH -->
+    <div class="max-w-md h-auto mt-20 ml-auto mr-32">
+
+        <!-- Input -->
+        <div class="flex items-center bg-gray-200 rounded">
+            <input type="search" id="search" class="m-6 rounded p-2 shadow w-full" placeholder="Cerca Esercizi">
+        </div>
+
+        <!-- Risultati — FUORI dal div dell'input -->
+        <ul id="results" class="flex flex-col gap-2 px-2 mt-2"></ul>
+
+    </div>
+
+</div>
+<script src="ricercaEs.js"></script>
+</body>
+</html>

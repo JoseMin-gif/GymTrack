@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1, 
+        "nome": "Panca Piana", 
+        "gruppo": "Petto", 
+        "attrezzatura": "Bilanciere"
+    },
+    {
+        "id": 2, 
+        "nome": "Squat", 
+        "gruppo": "Gambe", 
+        "attrezzatura": "Peso Libero"
+    },
+    {
+        "id": 3, 
+        "nome": "Stacco", 
+        "gruppo": "Bassa Schiena", 
+        "attrezzatura": "Bilanciere"
+    },
+    {
+        "id": 4, 
+        "nome": "Handstand Push-Up", 
+        "gruppo": "Spalle", 
+        "attrezzatura": "Peso Corporeo"
+    },
+    {
+        "id": 5, 
+        "nome": "Planche Lean", 
+        "gruppo": "Petto", 
+        "attrezzatura": "Peso Corporeo"
+    }
+]
