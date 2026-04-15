@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="output.css">
     <title>Document</title>
 </head>
 <body class="bg-[url('img/bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen">
@@ -12,9 +12,9 @@
 
     <!-- NAVBAR -->
     <nav class="relative top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-10 h-14 bg-bg/90 backdrop-blur border-b border-border" style="background-color:rgba(5,4,4,0.895);border-bottom:1px solid #1f2128;">
-        <span style="color:#ffffff;font-family:'Syne',sans-serif;font-weight:800;font-size:1.125rem;letter-spacing:-0.02em;">
-            Gym<span style="color:#c8f135">Track</span>
-        </span>
+            <a href="index.html">
+                <span style="color:#ffffff; font-family:'Syne',sans-serif;font-weight:800;font-size:1.125rem;letter-spacing:-0.02em;">Gym<span style="color:#c8f135">Track</span></span>
+            </a>
         <div class="hidden md:flex items-center gap-8 text-sm" style="color:#4b5060;font-weight:500;">
             <a href="#" style="color:#e8eaf0;">Dashboard</a>
             <a href="#" class="hover:text-white transition-colors">Scheda</a>
@@ -32,8 +32,7 @@
     </nav>
 
     <!-- SEARCH -->
-    <div class="max-w-md h-auto mt-20 ml-auto mr-32">
-
+    <div class="max-w-md h-auto mt-20 ml-auto mr-32 shadow-lg rounded-3xl bg-gray-800/80 backdrop-blur p-6">
         <!-- Input -->
         <div class="flex items-center bg-gray-200 rounded">
             <input type="search" id="search" class="m-6 rounded p-2 shadow w-full" placeholder="Cerca Esercizi">
@@ -41,10 +40,63 @@
 
         <!-- Risultati — FUORI dal div dell'input -->
         <ul id="results" class="flex flex-col gap-2 px-2 mt-2"></ul>
-
     </div>
+    
+    <!-- MODAL -->
+    <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-md mx-4 p-6">
+            
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-lg font-bold text-gray-800" id="modal-titolo">Aggiungi Esercizio</h2>
+                <button onclick="chiudiModal()" class="text-gray-400 hover:text-gray-600 text-xl font-bold">✕</button>
+            </div>
 
+            <!-- Form -->
+            <div class="flex flex-col gap-4">
+
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Serie</label>
+                    <input type="number" id="input-serie" placeholder="es. 4"
+                        class="mt-1 w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-lime-400">
+                </div>
+
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Ripetizioni</label>
+                    <input type="number" id="input-reps" placeholder="es. 8"
+                        class="mt-1 w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-lime-400">
+                </div>
+
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Peso (kg)</label>
+                    <input type="number" id="input-peso" placeholder="es. 80"
+                        class="mt-1 w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-lime-400">
+                </div>
+
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Note (opzionale)</label>
+                    <input type="text" id="input-note" placeholder="es. aumentare peso la prossima volta"
+                        class="mt-1 w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-lime-400">
+                </div>
+
+            </div>
+
+            <!-- Bottoni -->
+            <div class="flex gap-3 mt-6">
+                <button onclick="chiudiModal()"
+                    class="flex-1 border border-gray-200 text-gray-600 rounded-xl py-2 text-sm font-semibold hover:bg-gray-50 transition-colors">
+                    Annulla
+                </button>
+                <button onclick="salvaEsercizio()"
+                    class="flex-1 text-sm font-bold rounded-xl py-2 transition-colors"
+                    style="background:#c8f135;color:#0e0f11;">
+                    Salva
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>
-<script src="ricercaEs.js"></script>
+<script src="script/ricercaEs.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 let esercizi = [];
+let esercizioSelezionato = null;
 
-fetch('esercizi.json')
+fetch('data/esercizi.json')
     .then(res => res.json())
     .then(data => {
         esercizi = data;
@@ -22,7 +23,7 @@ function mostraRisultati(lista) {
                 <p class="font-semibold text-gray-800 text-sm">${e.nome}</p>
                 <p class="text-gray-400 text-xs mt-0.5">${e.gruppo} · ${e.attrezzatura}</p>
             </div>
-            <span class="text-lime-600 text-xs font-bold">+ Aggiungi</span>
+            <span id="aggiungi" class="text-lime-600 text-xs font-bold">+ Aggiungi</span>
         </li>
     `).join('');
 }
@@ -43,3 +44,33 @@ document.getElementById('search').addEventListener('input', function () {
 
     mostraRisultati(filtrati);
 });
+
+// Aggiungi funzionalità al pulsante "Aggiungi"
+document.getElementById('results').addEventListener('click', function (e) {
+    if (e.target.id === 'aggiungi') {
+        const nomeEsercizio = e.target.closest('li').querySelector('p').textContent;
+        apriModal(esercizi.find(e => e.nome === nomeEsercizio));
+    }
+});
+
+function apriModal(esercizio) {
+    esercizioSelezionato = esercizio;
+    document.getElementById('modal-titolo').textContent = esercizio.nome;
+
+    //svuotare i campi
+    document.getElementById('input-serie').value = '';
+    document.getElementById('input-reps').value = '';
+    document.getElementById('input-peso').value = '';
+    document.getElementById('input-note').value = '';
+
+    //mostra il modal
+    const modal = document.getElementById('modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+function chiudiModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
